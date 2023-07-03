@@ -31,9 +31,6 @@ h1 {
 }
 
 #screen {
-    overflow:auto;
-    color: red;
-    margin: 4px;
     padding: 10px;
     border: solid;
     border-radius: 0.5em;
@@ -43,10 +40,31 @@ h1 {
     filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.25));
     font-family: 'digital-clock-font';
     display: flex;
-    justify-content: end;
-    align-items: end;
+    justify-content: space-between;
+    flex-direction: column;
     flex-wrap: wrap;
     font-size: 60px;
+}
+
+#upper-screen {
+    line-height: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    overflow: auto;
+    height: 90px;
+    width: 440px;
+    font-size: 26px;
+}
+
+#lower-screen {
+    overflow: hidden;
+    color: orange;
+    width: 97%;
+    height: 50px;
+    display: flex;
+    justify-content: end;
 }
 
 #function-row {
@@ -169,4 +187,7 @@ h1 {
     height: 30px;
     border-radius: 50%;
 }
-/*Place Holder Styles - END*/
+
+#negative, #exponent, #on, #comma, #arrow, #openParenthesis, #closedParenthesis, #tan, #cos, #sin, #in, #log, #FD, #abc, #x0t, #alpha, #powerOf2, #toThePowerOf, #exit, #menu, #vars, #optn, #shift, #F1, #F2, #F3, #F4, #F5, #F6 {
+    color: red;
+}
