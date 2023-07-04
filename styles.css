@@ -153,7 +153,7 @@ h1 {
 }
 
 /*Place Holder Styles - START*/
-#placeholder-div {
+#d-pad-div {
     width: 75px;
     height: 75px;
     background-color: black;
@@ -188,6 +188,6 @@ h1 {
     border-radius: 50%;
 }
 
-#negative, #exponent, #on, #comma, #arrow, #openParenthesis, #closedParenthesis, #tan, #cos, #sin, #in, #log, #FD, #abc, #x0t, #alpha, #powerOf2, #toThePowerOf, #exit, #menu, #vars, #optn, #shift, #F1, #F2, #F3, #F4, #F5, #F6 {
+#exponent, #on, #comma, #arrow, #openParenthesis, #closedParenthesis, #tan, #cos, #sin, #in, #log, #FD, #abc, #x0t, #alpha, #powerOf2, #toThePowerOf, #exit, #menu, #vars, #optn, #shift, #F1, #F2, #F3, #F4, #F5, #F6 {
     color: red;
 }

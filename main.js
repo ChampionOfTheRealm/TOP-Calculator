@@ -14,12 +14,14 @@ const DIVISION = document.getElementById('division');
 const ADDITION = document.getElementById('addition');
 const SUBTRACTION = document.getElementById('subtraction')
 const EXECUTE = document.getElementById('execute');
-const DECIMAL = document.getElementById('decimal')
-
+const DECIMAL = document.getElementById('decimal');
+const NEGATIVE = document.getElementById('negative');
 const DEL = document.getElementById('del');
 
 const LOWER_SCREEN = document.getElementById('lower-screen');
 const UPPER_SCREEN = document.getElementById('upper-screen');
+const ON_BUTTON =  document.getElementById('on');
+
 
 ONE.addEventListener('click', numbers);
 TWO.addEventListener('click', numbers);
@@ -35,11 +37,13 @@ ZERO.addEventListener('click', numbers);
 MULTIPLICATION.addEventListener('click', operator);
 DIVISION.addEventListener('click', operator);
 ADDITION.addEventListener('click', operator);
-SUBTRACTION.addEventListener('click', operator)
+SUBTRACTION.addEventListener('click', operator);
 EXECUTE.addEventListener('click', operate);
 
-DEL.addEventListener('click', clearScreen);
-DECIMAL.addEventListener('click', numbers)
+DEL.addEventListener('click', deleteCharacter);
+DECIMAL.addEventListener('click', numbers);
+NEGATIVE.addEventListener('click', numbers);
+ON_BUTTON.addEventListener('click', clearScreen)
 
 
 /* const BUTTONS = document.querySelectorAll('button');
@@ -55,6 +59,19 @@ let isEqualsPressed = false;
 
 function numbers(e) {
     let numberA = e.target.innerHTML;
+    console.log(numberA);
+    console.log(number1.length);
+    console.log(number1.toString().split("").includes("."));
+    console.log(number1.toString().split(""));
+
+
+    
+    if (numberA == "(-)" && number1.length < 1) {
+        numberA = numberA[1];
+    }
+    if (numberA == "(-)" && number1.length >= 1) {
+        return;
+    }
 
     if (isEqualsPressed == true) {
         return;
@@ -62,11 +79,17 @@ function numbers(e) {
         if (number1.length < 1 && numberA == ".") {
             return;
         }
+        if (numberA == "." && number1.toString().split("").includes(".")) {
+            return;
+        }
         number1.push(numberA);
         number1 = number1.join("");
         number1 = [number1];
         LOWER_SCREEN.innerHTML = number1;
     } else {
+        if (numberA == "." && number2.toString().split("").includes(".")) {
+            return;
+        }
         UPPER_SCREEN.innerHTML = number1 + " " + operatorSign;
         number2.push(numberA);
         number2 = number2.join("");
@@ -83,7 +106,7 @@ function operator(e) {
         UPPER_SCREEN.innerHTML = number1 + " " + operatorSign;
         LOWER_SCREEN.innerHTML = "";
     }
-    if (number1.length != 0 && operatorSign.length < 1) {
+    if (number1.length != 0 && operatorSign.length < 1 && number1 != "-") {
         operatorSign.push(e.target.innerHTML);
         UPPER_SCREEN.innerHTML = number1 + " " + operatorSign;
         LOWER_SCREEN.innerHTML = "";
@@ -119,10 +142,20 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    number1 = a / b;
+    if (b != 0) {
+        number1 = a / b;
     number1 = [number1];
     number2 = [];
     return a / b;
+    } else {
+        number1 = [];
+        operatorSign = [];
+        number2 = [];
+        equation = [];
+        isEqualsPressed = false;
+        return "error";
+    }
+    
 }
 
 function operate() {  
@@ -144,6 +177,24 @@ function operate() {
     operatorSign = [];
     number2 = [];
     equation = [];
+}
+
+function deleteCharacter() {
+    if (number1.length == 0 && number2.length == 0) {
+        return;
+    } else if (number1.length > 0 && number2.length == 0) {
+        number1 = number1.toString().split("");
+        Array.from(number1);
+        number1.pop();
+        number1 = number1.join("");
+        LOWER_SCREEN.innerText = number1;
+    } else {
+        number2 = number2.toString().split("");
+        Array.from(number1);
+        number2.pop();
+        number2 = number2.join("");
+        LOWER_SCREEN.innerText = number2;
+    }
 }
 
 function clearScreen() {
