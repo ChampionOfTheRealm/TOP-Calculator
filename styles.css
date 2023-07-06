@@ -41,6 +41,7 @@ h1 {
     font-family: 'digital-clock-font';
     display: flex;
     justify-content: space-between;
+    align-items: end;
     flex-direction: column;
     flex-wrap: wrap;
     font-size: 60px;
@@ -56,15 +57,17 @@ h1 {
     height: 90px;
     width: 440px;
     font-size: 26px;
+    color: rgb(31, 31, 31);
 }
 
 #lower-screen {
     overflow: hidden;
-    color: orange;
-    width: 97%;
+    color: rgb(31, 31, 31);
+    width: fit-content;
+    max-width: 435px;
     height: 50px;
     display: flex;
-    justify-content: end;
+    justify-content: start;
 }
 
 #function-row {
