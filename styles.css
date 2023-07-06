@@ -23,7 +23,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 670px;
+    height: 700px;
     width: 490px;
     border: solid;
     border-radius: 35px;
@@ -34,7 +34,7 @@ h1 {
     padding: 10px;
     border: solid;
     border-radius: 0.5em;
-    height: 140px;
+    height: 160px;
     width: 440px;
     background-color: rgb(151, 179, 151);
     filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.25));
@@ -54,20 +54,26 @@ h1 {
     justify-content: start;
     align-items: start;
     overflow: auto;
-    height: 90px;
+    height: 60px;
     width: 440px;
     font-size: 26px;
     color: rgb(31, 31, 31);
+    text-shadow: 1px 1px;
 }
 
 #lower-screen {
     overflow: hidden;
     color: rgb(31, 31, 31);
     width: fit-content;
-    max-width: 435px;
-    height: 50px;
+    max-height: 72px;
+    min-height: 36px;
     display: flex;
+    flex-wrap: wrap;
+    word-wrap: break-word;
     justify-content: start;
+    text-overflow: "-";
+    font-size: 45px;
+    text-shadow: 2px 2px;
 }
 
 #function-row {
@@ -152,7 +158,7 @@ h1 {
     font-size: 1.5em;
     font-weight: 600;
     filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.25));
-    
+    box-shadow: -3px 3px rgb(71, 71, 71), -2px 2px rgb(71, 71, 71), -1px 1px rgb(71, 71, 71);
 }
 
 /*Place Holder Styles - START*/

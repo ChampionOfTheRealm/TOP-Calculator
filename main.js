@@ -56,30 +56,24 @@ let number2 = [];
 let answer = [];
 let isEqualsPressed = false;
 let numberLength1 = 0;
+let numberLength = 0;
 
 function numbers(e) {
     let numberA = e.target.innerHTML;
     numberLength1 = number1.toString().split("");
-
-    /////////////////////////////////////////////////
-    //fix this if statement. not allowing the second number to be input once the max characters length for number1 is reached.
-    if (numberLength1.length > 14 || number2.length > 15) {
-        UPPER_SCREEN.innerText = "MAX CHARACTER LENGTH";
-        setTimeout(() => {
-            if (number2.length == 0 && operatorSign.length != 0) {
-                UPPER_SCREEN.innerText = number1;
-            } else {
-                UPPER_SCREEN.innerText = "";
-            }
-        }, 3000);
-
-        return;
-    }
-    //////////////////////////////////////////////////
+    numberLength2 = number2.toString().split("");
 
     if (isEqualsPressed == true) {
         return;
     } else if (operatorSign == "") {
+
+        if (numberLength1.length > 19) {
+            UPPER_SCREEN.innerText = "MAX CHARACTER LENGTH";
+            setTimeout(() => {
+                UPPER_SCREEN.innerText = "";
+            }, 3000);
+            return;
+        }
 
         if (number1.length < 1 && numberA == ".") {
             return;
@@ -108,6 +102,16 @@ function numbers(e) {
         LOWER_SCREEN.innerHTML = number1;
 
     } else {
+
+        if (numberLength2.length > 19) {
+            UPPER_SCREEN.innerText = "MAX CHARACTER LENGTH";
+            setTimeout(() => {
+                if (!isEqualsPressed) {
+                    UPPER_SCREEN.innerText = number1 + operatorSign;
+                }
+            }, 3000);
+            return;
+        }
 
         if (numberA == "." && number2.toString().split("").includes(".")) {
             return;
