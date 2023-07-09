@@ -45,6 +45,8 @@ DECIMAL.addEventListener('click', numbers);
 NEGATIVE.addEventListener('click', numbers);
 ON_BUTTON.addEventListener('click', clearScreen)
 
+window.addEventListener('keydown', keyPress);
+
 
 /* const BUTTONS = document.querySelectorAll('button');
 BUTTONS.forEach(button => button.addEventListener('click', showNumber)); */
@@ -59,7 +61,16 @@ let numberLength1 = 0;
 let numberLength = 0;
 
 function numbers(e) {
-    let numberA = e.target.innerHTML;
+    console.log(e)
+    let numberA;
+    if (e.key) {
+        numberA = e.key;
+    } else {
+        numberA = e.target.innerHTML;
+    }
+    
+    console.log("numberA: ", numberA);
+
     numberLength1 = number1.toString().split("");
     numberLength2 = number2.toString().split("");
 
@@ -93,6 +104,11 @@ function numbers(e) {
         }
 
         if (numberA == "(-)" && number1.toString().split("").includes("-")) {
+            number1 = number1.toString().split("");
+            number1.shift();
+            number1 = number1.join("");
+            number1 = [number1];
+            LOWER_SCREEN.innerHTML = number1;
             return;
         }
 
@@ -127,6 +143,11 @@ function numbers(e) {
         }
 
         if (numberA == "(-)" && number2.toString().split("").includes("-")) {
+            number2 = number2.toString().split("");
+            number2.shift();
+            number2 = number2.join("");
+            number2 = [number2];
+            LOWER_SCREEN.innerHTML = number2;
             return;
         }
 
@@ -139,13 +160,20 @@ function numbers(e) {
 }
 
 function operator(e) {
+    let operatorSignA;
+    if (e.key) {
+        operatorSignA = e.key;
+    } else {
+        operatorSignA = e.target.innerHTML;
+    }
+
     if (number1.length != 0 && number2.length != 0) {
         operate();
         UPPER_SCREEN.innerHTML = number1 + " " + operatorSign;
         LOWER_SCREEN.innerHTML = "";
     }
     if (number1.length != 0 && operatorSign.length < 1 && number1 != "-") {
-        operatorSign.push(e.target.innerHTML);
+        operatorSign.push(operatorSignA);
         UPPER_SCREEN.innerHTML = number1 + " " + operatorSign;
         LOWER_SCREEN.innerHTML = "";
     }
@@ -203,7 +231,7 @@ function operate() {
         LOWER_SCREEN.innerHTML = add(number1, number2);
     } else if (operatorSign[0] == "-") {
         LOWER_SCREEN.innerHTML = subtract(number1, number2);
-    } else if (operatorSign[0] == "÷") {
+    } else if (operatorSign[0] == "÷" || operatorSign[0] == "/") {
         LOWER_SCREEN.innerHTML = divide(number1, number2);
     } else if (operatorSign[0] == "x") {
         LOWER_SCREEN.innerHTML =  multiply(number1, number2);
@@ -243,4 +271,23 @@ function clearScreen() {
     operatorSign = [];
     number2 = [];
     isEqualsPressed = false;
+}
+
+function keyPress(e) {
+    showEvent(e);
+    if ((e.key >= 0 && e.key <= 9)){
+        numbers(e);
+    } else if (e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/') {
+        if (e.key == '-' && number1.length <= 0) {
+
+        }
+        e.preventDefault();
+        operator(e);
+    } else if (e.key == "Enter") {
+        operate();
+    }
+}
+
+function showEvent(e) {
+    console.log(e);
 }
