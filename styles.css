@@ -196,5 +196,5 @@ h1 {
 }
 
 #exponent, #comma, #arrow, #openParenthesis, #closedParenthesis, #tan, #cos, #sin, #in, #log, #FD, #abc, #x0t, #alpha, #powerOf2, #toThePowerOf, #exit, #menu, #vars, #optn, #shift, #F1, #F2, #F3, #F4, #F5, #F6 {
-    color: grey;
+    color: rgb(199, 199, 199);
 }

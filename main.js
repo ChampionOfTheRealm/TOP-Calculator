@@ -245,14 +245,14 @@ function deleteCharacter() {
 
     if (number1.length == 0 && number2.length == 0) {
         return;
-    } else if (number1.length > 0 && number2.length == 0) {
+    } else if (number1.length > 0 && number2.length == 0 && operatorSign.length == 0) {
         number1 = number1.toString().split("");
         Array.from(number1);
         number1.pop();
         number1 = number1.join("");
         number1 = [number1];
         LOWER_SCREEN.innerText = number1;
-    } else if (number1.length > 0 && number2.length == 0 && operatorSign != []) {
+    } else if (number1.length > 0 && number2.length > 0) {
         number2 = number2.toString().split("");
         Array.from(number1);
         number2.pop();
@@ -275,16 +275,18 @@ function clearScreen() {
 
 function keyPress(e) {
     showEvent(e);
+
+    if (e.key == " ") return;
+
     if ((e.key >= 0 && e.key <= 9)){
         numbers(e);
     } else if (e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/') {
-        if (e.key == '-' && number1.length <= 0) {
-
-        }
         e.preventDefault();
         operator(e);
     } else if (e.key == "Enter") {
         operate();
+    } else if (e.key == "Backspace"){
+        deleteCharacter();
     }
 }
 
