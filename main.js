@@ -1,78 +1,39 @@
-const ONE = document.getElementById('one');
-const TWO = document.getElementById('two');
-const THREE = document.getElementById('three');
-const FOUR = document.getElementById('four');
-const FIVE = document.getElementById('five');
-const SIX = document.getElementById('six');
-const SEVEN = document.getElementById('seven');
-const EIGHT = document.getElementById('eight');
-const NINE = document.getElementById('nine');
-const ZERO = document.getElementById('zero');
-
-const MULTIPLICATION = document.getElementById('multiplication');
-const DIVISION = document.getElementById('division');
-const ADDITION = document.getElementById('addition');
-const SUBTRACTION = document.getElementById('subtraction')
+const NUMBERS = document.querySelectorAll('.numbers');
+const OPERATOR = document.querySelectorAll('.operator');
 const EXECUTE = document.getElementById('execute');
-const DECIMAL = document.getElementById('decimal');
-const NEGATIVE = document.getElementById('negative');
 const DEL = document.getElementById('del');
-
 const LOWER_SCREEN = document.getElementById('lower-screen');
 const UPPER_SCREEN = document.getElementById('upper-screen');
-const ON_BUTTON =  document.getElementById('on');
 
-
-ONE.addEventListener('click', numbers);
-TWO.addEventListener('click', numbers);
-THREE.addEventListener('click', numbers);
-FOUR.addEventListener('click', numbers);
-FIVE.addEventListener('click', numbers);
-SIX.addEventListener('click', numbers);
-SEVEN.addEventListener('click', numbers);
-EIGHT.addEventListener('click', numbers);
-NINE.addEventListener('click', numbers);
-ZERO.addEventListener('click', numbers);
-
-MULTIPLICATION.addEventListener('click', operator);
-DIVISION.addEventListener('click', operator);
-ADDITION.addEventListener('click', operator);
-SUBTRACTION.addEventListener('click', operator);
+NUMBERS.forEach(button => button.addEventListener('click', numbers));
+OPERATOR.forEach(button => button.addEventListener('click', operator));
 EXECUTE.addEventListener('click', operate);
-
 DEL.addEventListener('click', deleteCharacter);
-DECIMAL.addEventListener('click', numbers);
-NEGATIVE.addEventListener('click', numbers);
 ON_BUTTON.addEventListener('click', clearScreen)
-
 window.addEventListener('keydown', keyPress);
 
-
-/* const BUTTONS = document.querySelectorAll('button');
-BUTTONS.forEach(button => button.addEventListener('click', showNumber)); */
-
+//THIS IS TO IMPLENT THE SCREEN TURNING ON.
+//WORK ON THIS AFTER REFACTORING.
+const ON_BUTTON =  document.getElementById('on');
+//YOU ALSO NEED TO FIX THE ISSUE WITH DIVIDING 1 BY 998001. THE NUMBER IS LONGER THAN THE SCREEN
 
 let number1 = [];
 let operatorSign = [];
 let number2 = [];
-let answer = [];
 let isEqualsPressed = false;
 let numberLength1 = 0;
 let numberLength = 0;
 
 function numbers(e) {
-    console.log(e)
     let numberA;
+    numberLength1 = number1.toString().split("");
+    numberLength2 = number2.toString().split("");
+    
     if (e.key) {
         numberA = e.key;
     } else {
         numberA = e.target.innerHTML;
     }
-    
-    console.log("numberA: ", numberA);
-
-    numberLength1 = number1.toString().split("");
-    numberLength2 = number2.toString().split("");
 
     if (isEqualsPressed == true) {
         return;
@@ -223,7 +184,6 @@ function divide(a, b) {
 }
 
 function operate() {  
-    MULTIPLICATION.onclick = null;
     isEqualsPressed = true;
     UPPER_SCREEN.innerHTML = number1 + " " + operatorSign + " " + number2;
 
@@ -274,7 +234,6 @@ function clearScreen() {
 }
 
 function keyPress(e) {
-    showEvent(e);
 
     if (e.key == " ") return;
 
@@ -288,8 +247,4 @@ function keyPress(e) {
     } else if (e.key == "Backspace"){
         deleteCharacter();
     }
-}
-
-function showEvent(e) {
-    console.log(e);
 }
