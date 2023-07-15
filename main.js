@@ -4,6 +4,9 @@ const EXECUTE = document.getElementById('execute');
 const DEL = document.getElementById('del');
 const LOWER_SCREEN = document.getElementById('lower-screen');
 const UPPER_SCREEN = document.getElementById('upper-screen');
+//THIS IS TO IMPLENT THE SCREEN TURNING ON.
+//WORK ON THIS AFTER REFACTORING.
+const ON_BUTTON =  document.getElementById('on');
 
 NUMBERS.forEach(button => button.addEventListener('click', numbers));
 OPERATOR.forEach(button => button.addEventListener('click', operator));
@@ -11,11 +14,6 @@ EXECUTE.addEventListener('click', operate);
 DEL.addEventListener('click', deleteCharacter);
 ON_BUTTON.addEventListener('click', clearScreen)
 window.addEventListener('keydown', keyPress);
-
-//THIS IS TO IMPLENT THE SCREEN TURNING ON.
-//WORK ON THIS AFTER REFACTORING.
-const ON_BUTTON =  document.getElementById('on');
-//YOU ALSO NEED TO FIX THE ISSUE WITH DIVIDING 1 BY 998001. THE NUMBER IS LONGER THAN THE SCREEN
 
 let number1 = [];
 let operatorSign = [];

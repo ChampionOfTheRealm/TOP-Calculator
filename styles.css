@@ -5,7 +5,6 @@ body {
     align-items: center;
     font-family: monospace;
     color: rgb(0, 0, 0);
-    
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
@@ -34,7 +33,7 @@ h1 {
     padding: 10px;
     border: solid;
     border-radius: 0.5em;
-    height: 160px;
+    height: 110px;
     width: 440px;
     background-color: rgb(151, 179, 151);
     filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.25));
@@ -72,7 +71,7 @@ h1 {
     word-wrap: break-word;
     justify-content: start;
     text-overflow: "-";
-    font-size: 45px;
+    font-size: 40px;
     text-shadow: 2px 2px;
 }
 
@@ -110,7 +109,6 @@ h1 {
     flex-wrap: wrap;
     height: 75px;
     width: 75px;
-
 }
 
 #up {
@@ -142,7 +140,6 @@ h1 {
     display: flex;
     padding-left: 5px;
     padding-right: 5px;
-
 }
 
 .main-buttons-rows button {
